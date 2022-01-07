@@ -16,6 +16,10 @@ https://github.com/afzalali15/online_shopee
 
 #### Screenshot
 
+<p align="center">
+  <img alt="image" src="https://github.com/imamhossain94/flutter-getX-MVC/blob/main/screenshots/image1.jpg" width="100%">
+</p>
+
 
 
 
