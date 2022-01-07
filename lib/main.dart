@@ -16,7 +16,8 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: TodoPage(),
+      debugShowCheckedModeBanner: false,
+      home: const TodoPage(),
     );
   }
 }
