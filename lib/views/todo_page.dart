@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_getx_mvc/controllers/todo_controller.dart';
+import 'package:get/get.dart';
 
 class TodoPage extends StatelessWidget {
-  const TodoPage({Key? key}) : super(key: key);
+  TodoPage({Key? key}) : super(key: key);
+
+  final todoController = Get.put(TodoController());
 
   @override
   Widget build(BuildContext context) {
@@ -11,33 +15,29 @@ class TodoPage extends StatelessWidget {
           title: const Text("Flutter GetX MVC Todo Application"),
           elevation: 5,
         ),
-        body: Container(
-          child: Column(
-            children: [
-              const SizedBox(height: 5,),
-              todoItem(
-                title: "Hello World",
-                subTitle: "Welcome to programming",
-                onPressed: () {
-
-                }
-              ),
-              todoItem(
-                  title: "Hello World",
-                  subTitle: "Welcome to programming",
-                  onPressed: () {
-
-                  }
-              )
-            ],
-          )
+        body: GetX<TodoController>(builder: (controller) {
+          return ListView.builder(
+              physics: const BouncingScrollPhysics(),
+              itemCount: controller.todoItems.length,
+              itemBuilder: (context, index) {
+                return todoItem(
+                    title: controller.todoItems[index].title ?? "",
+                    subTitle: controller.todoItems[index].subTitle ?? "",
+                    onPressed: () {
+                      controller.deleteItem(controller.todoItems[index]);
+                    });
+              });
+        }),
+        floatingActionButton: FloatingActionButton.extended(
+          onPressed: () {
+            todoController.addNewItem();
+          },
+          label: Obx(() => Text(
+                todoController.totalItems.toString(),
+                style: const TextStyle(fontSize: 24),
+              )),
+          icon: const Icon(Icons.add),
         ),
-        floatingActionButton:
-            FloatingActionButton.extended(
-                onPressed: (){},
-                label: Text("0", style: TextStyle(fontSize: 24),),
-                icon: const Icon(Icons.add),
-            ),
       ),
     );
   }
