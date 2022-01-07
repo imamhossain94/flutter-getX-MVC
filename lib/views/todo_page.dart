@@ -9,10 +9,12 @@ class TodoPage extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           title: const Text("Flutter GetX MVC Todo Application"),
+          elevation: 5,
         ),
         body: Container(
           child: Column(
             children: [
+              const SizedBox(height: 5,),
               todoItem(
                 title: "Hello World",
                 subTitle: "Welcome to programming",
@@ -43,7 +45,8 @@ class TodoPage extends StatelessWidget {
 
   Widget todoItem({String? title, String? subTitle, VoidCallback? onPressed}) {
     return Card(
-      color: Colors.blueGrey,
+      color: Colors.redAccent,
+      elevation: 5,
       child: ListTile(
         title:  Text(
           title!, style: const TextStyle(color: Colors.white),

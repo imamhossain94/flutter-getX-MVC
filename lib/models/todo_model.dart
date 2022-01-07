@@ -6,5 +6,5 @@ class TodoModel {
     title = title;
     subTitle = subTitle;
   }
-  
+
 }
